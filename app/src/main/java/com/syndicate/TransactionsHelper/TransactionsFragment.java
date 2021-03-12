@@ -2,18 +2,21 @@ package com.syndicate.TransactionsHelper;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -296,22 +299,32 @@ public class TransactionsFragment extends Fragment implements SortTransactionsDi
                         .withListener(new PermissionListener() {
                             @Override
                             public void onPermissionGranted(PermissionGrantedResponse response) {
-                                File file = null;
 
-                                try {
-                                    file = createPDFFileAndShare(name, address, initialDatePdf, finalDatePdf);
-                                } catch (IOException e) {
-                                    e.printStackTrace();
+                                if(ContextCompat.checkSelfPermission(getContext(),
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                        != PackageManager.PERMISSION_GRANTED)
+                                {
+                                    Toast.makeText(getContext(),"Permission not granted",Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    File file = null;
+
+                                    try {
+                                        file = createPDFFileAndShare(name, address, initialDatePdf, finalDatePdf);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    Uri uri = FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".fileprovider", file);
+                                    Intent share = new Intent();
+                                    share.setAction(Intent.ACTION_SEND);
+                                    share.setType("application/pdf");
+                                    share.putExtra(Intent.EXTRA_STREAM, uri);
+                                    share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                                    startActivity(Intent.createChooser(share, "Share"));
                                 }
 
-                                Uri uri = FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".fileprovider", file);
-                                Intent share = new Intent();
-                                share.setAction(Intent.ACTION_SEND);
-                                share.setType("application/pdf");
-                                share.putExtra(Intent.EXTRA_STREAM, uri);
-                                share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                                startActivity(Intent.createChooser(share, "Share"));
                             }
 
                             @Override
@@ -584,7 +597,7 @@ public class TransactionsFragment extends Fragment implements SortTransactionsDi
     private File createPDFFileAndShare(String name, String address, String initialDate, String finalDate) throws IOException {
 
         String fileName = name + initialDate + "-" + finalDate+".pdf";
-        String path = Environment.getExternalStorageDirectory() + File.separator + "Ledger.pdf";
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS) + File.separator + "Ledger.pdf";
         File file = new File(path);
 
         if(!file.exists()){
