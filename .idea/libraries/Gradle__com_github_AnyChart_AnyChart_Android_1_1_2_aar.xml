@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.AnyChart:AnyChart-Android:1.1.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/668c1a761bdd3b825ae4db9389c9ce13/jetified-AnyChart-Android-1.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/668c1a761bdd3b825ae4db9389c9ce13/jetified-AnyChart-Android-1.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/668c1a761bdd3b825ae4db9389c9ce13/jetified-AnyChart-Android-1.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c6416af4bfd8f5b3b69bb5d8d588d56/jetified-AnyChart-Android-1.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c6416af4bfd8f5b3b69bb5d8d588d56/jetified-AnyChart-Android-1.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8c6416af4bfd8f5b3b69bb5d8d588d56/jetified-AnyChart-Android-1.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eae41278de0e92624871200f3ac45e46/jetified-AnyChart-Android-1.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eae41278de0e92624871200f3ac45e46/jetified-AnyChart-Android-1.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eae41278de0e92624871200f3ac45e46/jetified-AnyChart-Android-1.1.2/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AnyChart/AnyChart-Android/1.1.2/e6e0e75393f18a35fa3d6d8ee5260185e314eed9/AnyChart-Android-1.1.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.AnyChart/AnyChart-Android/1.1.2/7f85a378197959655268a7e0e5d229428d1b9857/AnyChart-Android-1.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
